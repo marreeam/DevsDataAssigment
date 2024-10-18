@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{createContext, useContext,useState} from "react";
+import Search from "./component/search/search";
+import Cards from "./component/cards/cards";
 
+export const CharacterContext = createContext();
 function App() {
+  const [filteredCharacters, setFilteredCharacters] = useState([]);
+  const [characters, setCharacters] = useState([]);
+  const [selectedCharacter, setSelectedCharacter] = useState(null); // To store the selected character for the modal
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <CharacterContext.Provider value={{filteredCharacters, setFilteredCharacters,characters, setCharacters,selectedCharacter, setSelectedCharacter } }>
+
+
+
+    <div  >
+      <h1 className="text-[50px] m-5">Galaxy Explorer</h1>
+
+      <Search  />
+      <Cards/>
+    
     </div>
+    </CharacterContext.Provider>
   );
 }
 
