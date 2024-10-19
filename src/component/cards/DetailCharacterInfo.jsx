@@ -59,7 +59,7 @@ function DetailCharacterInfo({ character, closeModal }) {
             </div>
           </div>
         ) : null}
-
+    {/* if we click a button more details should show, we are passing the function those api's informations. */}
         {!isClicked && (
           <div className="mt-6 flex justify-center">
             <button

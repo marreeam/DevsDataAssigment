@@ -8,17 +8,18 @@ function Search() {
   const { setFilteredCharacters,Allcharacters,SetIsSearching} = useContext(CharacterContext); 
 
   function search() {
-    //if nothing is in input, we should not display anything, trim function checks it if empty
+    //if nothing is in input, it should not display anything, trim function checks if it is empty
     const trimmedInput = searchInput.trim();
 
     if (!trimmedInput) {
-  // If the input is empty, we set the searching boolean to false, and the characters are displayed
+  // If the input is empty, it set's the searching boolean to false, and the characters are displayed
       SetIsSearching(false); 
       setFilteredCharacters([]); 
       return;
     }
     
     SetIsSearching(true)
+    //filter characters by input value
     const filtered = Allcharacters.filter(character =>
       character.name.toLowerCase().includes(searchInput.toLowerCase()) 
 
