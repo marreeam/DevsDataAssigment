@@ -2,10 +2,12 @@ import React, { useEffect, useState, useContext } from 'react';
 import DetailCharacterInfo from './DetailCharacterInfo';
 import { CharacterContext } from "../../App";
 
+
 function Cards() {
   const [error, setError] = useState(null);
   const [prevPage, setPrevPage] = useState(null);
   const [nextPage, setNextPage] = useState(null);
+
   const [currentPage, setCurrentPage] = useState("https://swapi.dev/api/people/");
   
   const { filteredCharacters, characters, setCharacters, selectedCharacter, setSelectedCharacter, setAllCharacters,isSearching} = useContext(CharacterContext);
@@ -73,21 +75,21 @@ function Cards() {
 
   return (
 
-    <div className="p-2">
+    <div className="p-2 gap-3 flex flex-col">
       <h2 className="m-2 text-[20px] font-bold">Characters</h2>
 
-      <div className="flex flex-wrap justify-center items-center gap-5">
+      <div className=" gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
         {error ? (
           <p className="text-red-500">{error}</p>
         ) : charactersToDisplay.length > 0 ? (
           charactersToDisplay.map((character, index) => (
             <div
               key={index}
-              className="border rounded-lg p-4 w-[200px] bg-white shadow-md hover:shadow-2xl transition-shadow duration-200 ease-in-out"
+              className="border rounded-lg p-4 sm:p-5 lg:p-6 w-full sm:w-auto bg-white shadow-md hover:shadow-2xl transition-shadow duration-200 ease-in-out"
             >
-              <h3 className="text-lg font-bold">{character.name}</h3>
+              <h3 className="text-lg sm:text-xl lg:text-1xl font-bold">{character.name}</h3>
               <div className="text-end">
-                <button onClick={() => handleShowModal(character)}>Details</button>
+                <button className="text-sm sm:text-base lg:text-lg" onClick={() => handleShowModal(character)}>Details</button>
               </div>
             </div>
           ))
@@ -100,14 +102,14 @@ function Cards() {
         <DetailCharacterInfo character={selectedCharacter} closeModal={handleCloseModal} />
       )}
 
-      <div className="flex gap-3">
+      <div className="flex gap-5 justify-center ">
         {prevPage && (
-          <button onClick={() => setCurrentPage(prevPage)} className="border p-3">
+          <button onClick={() => setCurrentPage(prevPage)} className="bg-black hover:bg-slate-600 text-white  border p-2 rounded-lg hover:shadow-2xl transition-shadow duration-200 ease-in-out">
             Previous
           </button>
         )}
         {nextPage && (
-          <button onClick={() => setCurrentPage(nextPage)} className="border p-3">
+          <button onClick={() => setCurrentPage(nextPage)} className="bg-black hover:bg-slate-600 text-white border p-2 rounded-lg hover:shadow-2xl transition-shadow duration-200 ease-in-out">
             Next
           </button>
         )}

@@ -16,10 +16,9 @@ function App() {
 
 
     <div  >
-      <h1 className="text-[50px] m-5">Galaxy Explorer</h1>
-
-      <Search  />
-      <Cards/>
+    <h1 className="text-[40px] md:text-[50px] lg:text-[60px] m-5 text-center"  style={{ fontFamily: 'Orbitron, sans-serif' }}>Galaxy Explorer</h1>
+    <div className="flex justify-center"><Search /></div>
+    <Cards/>
     
     </div>
     </CharacterContext.Provider>
