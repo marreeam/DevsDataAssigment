@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { FaSearch } from "react-icons/fa"; 
-import { CharacterContext } from "../../App";
+import { CharacterContext } from "../../context/CharacterProvider";
 
 function Search() {
   const [searchInput, setSearchInput] = useState("");

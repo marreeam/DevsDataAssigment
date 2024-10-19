@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import DetailCharacterInfo from './DetailCharacterInfo';
-import { CharacterContext } from "../../App";
-import { useFetchAllCharacters } from '../hooks/useAllCharacterFetch'
-import { useFetchCurrentPageCharacters } from '../hooks/useFetchCurrentPageCharacters';
+import { CharacterContext } from "../../context/CharacterProvider";
+import { useFetchAllCharacters } from '../../hooks/useAllCharacterFetch'
+import { useFetchCurrentPageCharacters } from '../../hooks/useFetchCurrentPageCharacters';
 
 function Cards() {
   const [currentPage, setCurrentPage] = useState("https://swapi.dev/api/people/");

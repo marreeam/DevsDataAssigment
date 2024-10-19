@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaTimes } from "react-icons/fa";
-import { useFetchCharacterDetails } from '../hooks/useFetchCharacterDetails';
+import { useFetchCharacterDetails } from '../../hooks/useFetchCharacterDetails';
 function DetailCharacterInfo({ character, closeModal }) {
  
   const [isClicked, setIsClicked] = useState(false);
