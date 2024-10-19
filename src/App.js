@@ -6,9 +6,12 @@ export const CharacterContext = createContext();
 function App() {
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [characters, setCharacters] = useState([]);
-  const [selectedCharacter, setSelectedCharacter] = useState(null); // To store the selected character for the modal
+  const [Allcharacters, setAllCharacters] = useState([]);
+  const [selectedCharacter, setSelectedCharacter] = useState(null); 
+  const [isSearching,SetIsSearching ] = useState(false);
+  
   return (
-    <CharacterContext.Provider value={{filteredCharacters, setFilteredCharacters,characters, setCharacters,selectedCharacter, setSelectedCharacter } }>
+    <CharacterContext.Provider value={{filteredCharacters, setFilteredCharacters,characters, setCharacters,selectedCharacter, setSelectedCharacter,Allcharacters, setAllCharacters,isSearching,SetIsSearching } }>
 
 
 

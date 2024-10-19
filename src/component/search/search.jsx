@@ -1,22 +1,32 @@
 import { useContext, useState } from "react";
-import { FaSearch } from "react-icons/fa"; // fa for Font Awesome
+import { FaSearch } from "react-icons/fa"; 
 import { CharacterContext } from "../../App";
 
 function Search() {
   const [searchInput, setSearchInput] = useState("");
-  const { characters, setFilteredCharacters ,setCharacters} = useContext(CharacterContext); // Use only the required values
+
+  const { setFilteredCharacters,Allcharacters,SetIsSearching} = useContext(CharacterContext); 
 
   function search() {
-    const filtered = characters.filter(character =>
-      character.name.toLowerCase().includes(searchInput.toLowerCase()) // Filter case-insensitively
-    );
+    //if nothing is in input, we should not display anything, trim function checks it if empty
+    const trimmedInput = searchInput.trim();
 
-    if (filtered.length > 0) {
-      setFilteredCharacters(filtered); // Update filtered characters state
-    } else {
-      console.log("Character not found.");
+    if (!trimmedInput) {
+  // If the input is empty, we set the searching boolean to false, and the characters are displayed
+      SetIsSearching(false); 
       setFilteredCharacters([]); 
+      return;
+    }
+    
+    SetIsSearching(true)
+    const filtered = Allcharacters.filter(character =>
+      character.name.toLowerCase().includes(searchInput.toLowerCase()) 
 
+    );
+    if (filtered.length > 0) {
+      setFilteredCharacters(filtered); 
+    } else {
+      setFilteredCharacters([]); 
     }
   }
 
@@ -26,10 +36,15 @@ function Search() {
         type="text"
         placeholder="Find desired characters"
         className="w-full pl-4 pr-10 py-2 m-3 border rounded-[10px] focus:outline-none focus:ring-1 focus:ring-gray-400"
-        onChange={(event) => setSearchInput(event.target.value)} // Update search input
+        onChange={(event) => setSearchInput(event.target.value)} 
+        onKeyDown={(event) => {
+          if (event.key === 'Enter') {
+            search(); 
+          }
+        }}
       />
       <FaSearch
-        onClick={search} // Trigger search on icon click
+        onClick={search} 
         className="absolute right-1 top-1/2 transform -translate-y-1/2 text-black"
         size={20}
       />
